@@ -102,6 +102,7 @@ python run_plm.py --adapt --grad-accum-steps 32 --plm-type llama --plm-size base
 If you want to test the performance of the finetuned LLM, please run the following command:
 ```sh
 python run_plm.py --test --grad-accum-steps 32 --plm-type llama --plm-size base --rank 128 --device cuda:0 --lr 0.0001 --warmup-steps 2000 --num-epochs 80 --eval-per-epoch 2
+#? 这里用的是哪个模型？
 ```
 You can also specify the path to the finetuned LLM with argument `--model-dir`:
 ```sh

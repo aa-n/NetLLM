@@ -233,6 +233,7 @@ def run(args):
     torch.cuda.manual_seed(args.seed)
     torch.cuda.manual_seed_all(args.seed)
     random.seed(args.seed)
+    #TODO 这里该加low_rank后缀的地方反而没加
     if args.rank != -1:
         models_dir = os.path.join(cfg.plms_finetuned_dir, f'{args.plm_type}_{args.plm_size}', 
                               f'freeze_plm_{args.freeze_plm}', args.train_dataset, f'{args.dataset_frequency}Hz')
