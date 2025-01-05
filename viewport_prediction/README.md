@@ -63,6 +63,9 @@ After downloading the datasets, please put the image datasets into `data/images`
    munch==4.0.0
    transformers==4.34.1
    peft==0.6.2
+   opencv-python
+   yacs
+   prettytable
    ```
 
 # Usage
