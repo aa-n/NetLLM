@@ -154,7 +154,8 @@ def load_plm(model_name, model_path, specials_to_add = None, **kwargs):
     if 'llama' in model_name and device_input_side is not None and device_output_side is not None:
         device_middle_side = kwargs.pop('device_middle_side', None)
         device_map = create_device_map_for_llama(device_input_side, device_output_side, device_middle_side)
-        print("666",model_path,model_config,device_map)
+        # print("666",model_path,model_config,device_map)
+        # TODO 这里无法加载Wu2017数据集
         model = model_class.model.from_pretrained(model_path, config=model_config, device_map=device_map)
     else:
         model = model_class.model.from_pretrained(model_path, config=model_config)

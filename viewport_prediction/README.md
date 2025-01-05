@@ -52,20 +52,22 @@ After downloading the datasets, please put the image datasets into `data/images`
 ## Environment for NetLLM
 1. Create a conda environment for NetLLM:
 
-   `conda create -n vp_netllm python>=3.8.10`
+   `conda create -n vp python==3.8.10`
 
 2. Then install the following depdendencies:
 
    ```
-   python==3.8.10
-   torch==2.1.0
-   numpy==1.24.4
-   munch==4.0.0
-   transformers==4.34.1
-   peft==0.6.2
-   opencv-python
-   yacs
-   prettytable
+   torch==2.1.0 \
+   numpy==1.24.4 \
+   munch==4.0.0 \
+   transformers==4.34.1 \
+   peft==0.6.2 \
+   opencv-python \
+   yacs \
+   prettytable \
+   huggingface_hub==0.24.5 \
+   scikit-learn \
+   sentencepiece
    ```
 
 # Usage

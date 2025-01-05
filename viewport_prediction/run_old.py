@@ -44,7 +44,7 @@ def load_model(args, model, model_dir):
         # load low rank matrices
         model.plm.load_adapter(model_dir, adapter_name='default')
         # load other modules except plm
-        model.embedding_model.modules_except_plm.load_state_dict(torch.load(os.path.join(model_dir, 'modules_except_plm.bin')))
+        model.embedding_model.modules_except_plm.load_state_dict(torch.load(os.path.join(model_dir, 'modules_except_plm.bin'),map_location='cuda:0'))
     else:
         # low rank matrices are disabled, load whole model
         model.load_state_dict(torch.load(os.path.join(model_dir, 'model.bin')))
@@ -220,6 +220,7 @@ def test(args, embedding_model, dataloader_test, models_dir, results_dir):
             
 
 def run(args):
+    
     assert args.train_dataset in cfg.dataset_list 
     assert args.test_dataset in cfg.dataset_list
     assert args.plm_type in cfg.plm_types
@@ -301,12 +302,12 @@ def run(args):
         dataloader_train = DataLoader(raw_dataset_train, batch_size=args.bs, shuffle=True, pin_memory=True)
         dataloader_valid = DataLoader(raw_dataset_valid, batch_size=args.bs, shuffle=False, pin_memory=True)
         adapt(args, embedding_model, dataloader_train, dataloader_valid, models_dir, args.grad_accum_steps)
-
     if args.test:
         raw_dataset_test = create_dataset(args.test_dataset, his_window=args.his_window, fut_window=args.fut_window,
                                           trim_head=args.trim_head, trim_tail=args.trim_tail, include=['test'], frequency=args.dataset_frequency, step=args.sample_step)[0]
         
         dataloader_test = DataLoader(raw_dataset_test, batch_size=args.bs, shuffle=True, pin_memory=True)
+        print('awh',args.test)
         test(args, embedding_model, dataloader_test, models_dir, results_dir)
 
 
