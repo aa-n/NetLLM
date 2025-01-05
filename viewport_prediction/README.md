@@ -87,8 +87,13 @@ Note that we have made using image features an option. If you want to add image 
 
 If you want to test the performance of the finetuned LLM, please run the following command:
 ```sh
+# 这里是测试没有FT的llama.
 python run_plm.py --test --test-dataset Jin2022 --his-window 10 --fut-window 20 --plm-type llama --plm-size base --epochs 40 --bs 1 --lr 0.0002 --grad-accum-steps 32 --device cuda:0 --steps-per-valid 5000 --save-checkpoint-per-epoch 1 --rank 32 --scheduled-sampling
+
+# 这里load的模型是base模型,并没有加载lora权重，所以rank应该改为-1
+python run_plm.py --test --test-dataset Jin2022 --his-window 10 --fut-window 20 --plm-type llama --plm-size base --epochs 40 --bs 1 --lr 0.0002 --grad-accum-steps 32 --device cuda:0 --steps-per-valid 5000 --save-checkpoint-per-epoch 1 --rank -1 --scheduled-sampling
 ```
+
 You can also specify the path to the finetuned LLM with argument `--model-path`:
 ```sh
 python run_plm.py --test --test-dataset Jin2022 --his-window 10 --fut-window 20 --plm-type llama --plm-size base --epochs 40 --bs 1 --lr 0.0002 --grad-accum-steps 32 --device cuda:0 --steps-per-valid 5000 --save-checkpoint-per-epoch 1 --rank 32 --scheduled-sampling --model-path you_finetune_llm_dir

@@ -74,6 +74,7 @@ To run baselines, we need a different environment, since they are mainly written
    pip install stable-baselines[mpi]==2.10.1
    pip install pandas==1.1.5
    pip install tqdm==4.62.2
+   pip install protoc==3.19.0
    ```
 # Usage
 ## Usage of NetLLM
