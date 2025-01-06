@@ -201,11 +201,16 @@ def test(
     result_path,
     test_process_reward_fn,
 ):
+<<<<<<< Updated upstream
     if model_dir is None:
         print('skip load rank matrix')
     else:
         model = load_model(args, model, model_dir)
         print("Load model from:", model_dir)
+=======
+    model = load_model(args, model, model_dir)
+    print("Load model from:", model_dir)
+>>>>>>> Stashed changes
     max_ep_len = exp_dataset_info.max_timestep + 1
     target_return = exp_dataset_info.max_return * args.target_return_scale
     results = test_on_env(
@@ -393,6 +398,7 @@ def run(args):
         if not os.path.exists(results_dir):
             os.makedirs(results_dir)
         model_dir = args.model_dir if args.model_dir is not None else best_model_dir
+<<<<<<< Updated upstream
         # assert os.path.exists(
         #     model_dir
         # ), f"Model weight dir {model_dir} does not exist."
@@ -400,6 +406,11 @@ def run(args):
             model_dir
         ):
             model_dir = None
+=======
+        assert os.path.exists(
+            model_dir
+        ), f"Model weight dir {model_dir} does not exist."
+>>>>>>> Stashed changes
         test(
             args,
             rl_policy,
