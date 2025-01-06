@@ -61,7 +61,7 @@ def load_model(args, model, model_dir):
         # load lora weights
         model.plm.load_adapter(model_dir, adapter_name='default')
         # load other modules except plm
-        model.modules_except_plm.load_state_dict(torch.load(os.path.join(model_dir, 'modules_except_plm.bin')))
+        model.modules_except_plm.load_state_dict(torch.load(os.path.join(model_dir, 'modules_except_plm.bin'),map_location='cuda:0'))
     else:
         # lora is disabled, load whole model
         model.load_state_dict(torch.load(os.path.join(model_dir, 'model.bin')))
@@ -118,6 +118,7 @@ def adapt(args, model, exp_dataset, exp_dataset_info, eval_env_settings, checkpo
 
 
 def test(args, model, exp_dataset_info, env_settings, model_dir, result_dir, test_process_reward_fn):
+    #Note 加载
     model = load_model(args, model, model_dir)
     print('Load model from:', model_dir)
     target_return = exp_dataset_info.max_return * args.target_return_scale

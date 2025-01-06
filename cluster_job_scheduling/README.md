@@ -155,6 +155,14 @@ python run_plm.py \
     --peft-rank 128 \
     --state-feature-dim 256 \
     --device cuda:0
+
+    python run_plm.py \
+    --test \
+    --plm-type llama \
+    --plm-size base \
+    --rank 128 \
+    --state-feature-dim 256 \
+    --device cuda:0
 ```
 You can also specify the path to the finetuned LLM with argument `--model-dir`:
 ```sh
