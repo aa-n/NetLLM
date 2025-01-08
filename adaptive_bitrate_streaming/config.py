@@ -15,6 +15,8 @@ class Config:
         'fcc-train': _base_dir + 'data/traces/train/fcc-train/',
         'fcc-valid': _base_dir + 'data/traces/valid/fcc-valid/',
         'fcc-test': _base_dir + 'data/traces/test/fcc-test/',
+        'oboe':_base_dir + 'data/traces/test/oboe/',
+        'fcc':_base_dir + 'data/traces/test/fcc/',
     }
 
     video_size_dirs = {

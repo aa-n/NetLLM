@@ -112,6 +112,9 @@ python run_plm.py --test --plm-type llama --plm-size base --rank 128 --device cu
 We offer the model checkpoint of the finetuned Llama2-7b here: https://drive.google.com/file/d/17UyXJ9rGc0wKUkAhQ4wMrYDEbRPRjil0/view. If you want to try our model, please download the model checkpoint and store it in `data/ft_plms/try_llama2_7b`, and run the following command:
 ```sh
 python run_plm.py --test --plm-type llama --plm-size base --rank 128 --device cuda:0 --model-dir  data/ft_plms/try_llama2_7b
+
+python run_plm.py --trace oboe --test --plm-type llama --plm-size base --rank 128 --device cuda:0 --model-dir  data/ft_plms/try_llama2_7b
+
 ```
 
 ## Run baselines

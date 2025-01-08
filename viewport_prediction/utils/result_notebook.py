@@ -80,8 +80,12 @@ class ResultNotebook:
             print(pretty_table)
             print('Results saved at', result_path)
             file.close()
+    
+        if 'result_' not in result_path:
+            details_path = result_path.replace('_results.csv', '_details.csv')
+        else:
+            details_path = result_path.replace('result_', 'details_')
         
-        details_path = result_path.replace('result_', 'details_')
         with open(details_path, 'w') as file:
             for i in range(len(total_pred)):
                 pred_line = 'pred: '

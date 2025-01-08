@@ -173,6 +173,8 @@ def run(args):
     # For data/modules near the output side, we use args.device_out.
     # For data/modules lying in the middle, we use args.device_mid (it can be None). 
     # If args.device == args.device_out == args.device_mid (if not None), everything will be the same as using only one device.
+    import os
+    print('flag',print(os.getcwd()))
     plm, *_ = load_plm(args.plm_type, os.path.join(cfg.plm_dir, args.plm_type, args.plm_size), 
                        device_input_side=args.device, device_output_side=args.device_out, device_middle_side=args.device_mid)
 
@@ -239,7 +241,7 @@ if __name__ == '__main__':
     parser.add_argument('--sample-step', type=int, help='the steps for sampling experiences')
     # environment settings
     parser.add_argument('--trace', help='name of traces (e.g., fcc-test)', type=str, default='fcc-test')
-    parser.add_argument('--trace-num', help='number of traces. if set to -1, use all traces in the trace dir.', type=int, default=100)
+    parser.add_argument('--trace-num', help='number of traces. if set to -1, use all traces in the trace dir.', type=int, default=-1)
     parser.add_argument('--video', help='name of video (e.g., video1)', type=str, default='video1')
     parser.add_argument('--fixed-order', action='store_true', help='iterate over test traces in a fixed sequential order.')
     # plm settings
