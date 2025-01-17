@@ -17,6 +17,9 @@ class Config:
         'fcc-test': _base_dir + 'data/traces/test/fcc-test/',
         'oboe':_base_dir + 'data/traces/test/oboe/',
         'fcc':_base_dir + 'data/traces/test/fcc/',
+        'norway':_base_dir + 'data/traces/test/3g/',
+        '5g':_base_dir + 'data/traces/test/5g/',
+        'ghent':_base_dir + 'data/traces/test/ghent/',
     }
 
     video_size_dirs = {
